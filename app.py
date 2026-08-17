@@ -355,6 +355,11 @@ def Product_Models():
             selection_mode="single-row",
             use_container_width=True
         )
+        #Clear cache button for refreshing page
+        if ops_bar.button("🧹 Clear Cache"):
+            st.cache_data.clear()
+            st.rerun()
+
         if ops_bar.button("➕ Add Model"):
             add_model_dialog()
         
@@ -422,6 +427,11 @@ def Inventory():
         ops_bar = st.container(horizontal=True)
         # Merge function only gets model_id from inventory_df, data index the same as inventory_df
         merged_inventory = pd.merge(inventory_df, models_df, on="model_id", how="left")
+        #Clear cache button for refreshing page
+        if ops_bar.button("🧹 Clear Cache"):
+            st.cache_data.clear()
+            st.rerun()
+            
         if ops_bar.button("➕ Add Item"):
             add_inventory()
 
